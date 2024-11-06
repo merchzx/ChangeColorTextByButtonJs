@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .colors {
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        border: 3px solid black;
+        display: inline-block;
+    }
+
+    .lorem {
+        width: 1000px;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div class="colors" data-color="red"></div>
+    <div class="colors" data-color="green"></div>
+    <div class="colors" data-color="blue"></div>
+    <div class="colors" data-color="yellow"></div>
+    <div class="colors" data-color="purple"></div>
+
+    <p class="lorem">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum qui sapiente id voluptatum nemo,
+        natus esse cupiditate incidunt! Molestias ullam esse tenetur nostrum cupiditate. Facere voluptate fuga ipsam
+        quisquam inventore?
+        Suscipit quo eveniet earum id, cum sequi animi reiciendis delectus veniam impedit eos, dicta repudiandae!
+        Maxime, consequatur voluptates suscipit temporibus magnam ducimus laboriosam harum dicta aperiam, corporis
+        dolorem iusto eligendi.</p>
+
+    <script>
+        let lorem = document.querySelector(".lorem")
+        let colorsDiv = document.querySelectorAll(".colors");
+        let color = ["red", "green", "blue", "yellow", "purple"]
+        for (let i = 0; i < colorsDiv.length; i++) {
+            colorsDiv[i].style.background = color[i];
+        }
+
+        colorsDiv.forEach(colorD => {
+            colorD.addEventListener("click", function (e) {
+                for(let i = 0; i < colorsDiv.length; i++)
+                {
+                    let colorr = this.getAttribute('data-color')
+                    if (colorr == color[i]) {
+                        lorem.style.background = ""                        
+                        lorem.style.color = color[i];
+                        if(color[i]=="yellow") {
+                            lorem.style.background = "black"
+                        }
+                    }
+                }
+                console.log(e);
+            })
+
+        });
+
+    </script>
+</body>
+
+</html>
